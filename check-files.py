@@ -3,8 +3,7 @@
 Script to find markdown files and report on image references within them.
 
 This script walks through a directory structure starting from the specified path,
-finds all markdown (.md) files, and reports any image references found.
-It also reports image references that are missing alt text.
+finds all markdown files, and reports any image references that are missing alt text.
 """
 
 import os
@@ -32,7 +31,7 @@ def find_markdown_files(start_path):
 
     for root, _, files in os.walk(start_path):
         for file in files:
-            if file.lower().endswith('.md'):
+            if file.lower().endswith(".md"):
                 md_files.append(os.path.join(root, file))
 
     return md_files
@@ -49,18 +48,18 @@ def check_image_references(file_path):
         None: Prints results to stdout
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             content = f.readlines()
 
         found_images = False
 
         # Regular expression for markdown image syntax: ![alt text](image_url)
         # Captures alt text and image URL as groups
-        img_pattern = re.compile(r'!\[(.*?)\]\((.*?)\)')
+        img_pattern = re.compile(r"!\[(.*?)\]\((.*?)\)")
 
         for i, line in enumerate(content):
-            # Skip HTML image tags (not capturing these as per requirements)
-            if '<img' in line and '>' in line:
+            # Skip HTML image tags (only focused on markdown syntax)
+            if "<img" in line and ">" in line:
                 continue
 
             matches = img_pattern.findall(line)
@@ -78,14 +77,13 @@ def check_image_references(file_path):
 
 
 def main():
-    """Main function to parse arguments and execute the script."""
     parser = argparse.ArgumentParser(
         description="Find markdown files and report on image references."
     )
     parser.add_argument(
         "--path",
         required=True,
-        help="Path to the directory to search for markdown files"
+        help="Path to the directory to search for markdown files",
     )
 
     args = parser.parse_args()
