@@ -5,8 +5,8 @@ AltAuto is a tool designed to automatically create and suggest alternative text 
 
 ## Code Structure
 - `check-files.py`: Main Python script that walks through directories to find Markdown files and report on image references missing alt text
+- `alt-text.py`: Python script & library using AI to analyze images and suggest alt text
 - Future components to include:
-  - Script/library using AI to analyze images and suggest alt text
   - GitHub action to automate the process
 
 ## Coding Guidelines
@@ -16,12 +16,12 @@ AltAuto is a tool designed to automatically create and suggest alternative text 
 - Use descriptive variable and function names
 - Include docstrings for all functions and modules
 - Add appropriate type hints when possible
-- Don't add comments except for these cases:
-  - Any unusual logic (e.g. why a loop may be skipped)
-  - Explaining the purpose of regular expressions
+- Don't add comments except for these specific cases:
+  - Any unusual logic (for example why a loop may be skipped)
+  - Any regular expressions
 
 ### Python-Specific Rules
-- Target Python 3.6+ compatibility
+- Target Python 3.9+ compatibility
 - Use f-strings for string formatting
 - Use pathlib for file path operations when appropriate
 - Handle file operations with proper error handling and encoding (utf-8)

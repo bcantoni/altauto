@@ -2,6 +2,8 @@
 
 Automatically create and suggest alternative text for images referenced in Markdown files.
 
+![A person uses a laptop to create alt text for an image of a mountain with a sun](logo.png "AltAuto Project")
+
 ## Alt Text and Markdown
 
 The [Markdown standard][md] allows alternate text to be specified using syntax like:
@@ -33,7 +35,7 @@ Components:
   * Research and experimenting on a good model + prompt that works well
   * Make it easy to change the model and prompt
 * Script to read all Markdown .md files in the project, find any image references without alt text, and run the generator script to add it
-* GitHub action to run the above automatically and, if any changes made, create a pull request to bring in the alt text additions
+* GitHub action to run the above automatically and, if any changes made, create a pull request to bring in the alt text additions (create_pull_request action: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md)
 
 ### check-files.py
 
