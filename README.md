@@ -15,27 +15,35 @@ The [Markdown standard][md] allows alternate text to be specified using syntax l
 Which will render into HTML as:
 
 ```html
-<img src="/assets/images/san-juan-mountains.jpg" title="San Juan Mountains" alt="The San Juan Mountains are beautiful!">
+<img
+  src="/assets/images/san-juan-mountains.jpg"
+  title="San Juan Mountains"
+  alt="The San Juan Mountains are beautiful!"
+/>
 ```
 
-That's a good example of the mechanics of including alt text but misses the mark on being a good clue for accessibility (it's not really explaining what's in the picture). With the help of AI, here are some better options:
+That's a good example of the mechanics of including alt text, but we should create alt text that better explain what's in the picture. With the help of AI, here are some better options for that image example:
 
-* A scenic landscape featuring snow-capped mountains under a clear blue sky, with a foreground of rolling hills covered in golden foliage and a rustic wooden fence.
-* Snow-capped mountains rise above a field of yellow flowers with a wooden fence in the foreground. The sky is clear and blue.
-* A scenic landscape featuring snow-capped mountains in the background, a clear blue sky, and a wooden fence in the foreground with lush greenery and yellow flowers.
+- A scenic landscape featuring snow-capped mountains under a clear blue sky, with a foreground of rolling hills covered in golden foliage and a rustic wooden fence.
+- Snow-capped mountains rise above a field of yellow flowers with a wooden fence in the foreground. The sky is clear and blue.
+- A scenic landscape featuring snow-capped mountains in the background, a clear blue sky, and a wooden fence in the foreground with lush greenery and yellow flowers.
 
-There are many good resources on alt text, but this is a good simple one: [WebAIM: Alternative Text][aim].
+There are many good resources on the value of alt text and how to write effective descriptions. Here are a couple of good starting points:
+
+- [WebAIM: Alternative Text][aim]
+- [MDN: Img alt attribute][mdn]
 
 ## The Plan
 
-The plan is to build this as a demo of what's possible but also be a useable example that could be adopted for Markdown sites such as blogs, websites or documentation.
+The plan is to build a working example that could be adopted for Markdown sites such as blogs, websites or documentation.
 
 Components:
-* Script or library which uses an AI model to analyze an image and suggest alt text
-  * Research and experimenting on a good model + prompt that works well
-  * Make it easy to change the model and prompt
-* Script to read all Markdown .md files in the project, find any image references without alt text, and run the generator script to add it
-* GitHub action to run the above automatically and, if any changes made, create a pull request to bring in the alt text additions (create_pull_request action: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md)
+
+- Script or library which uses an AI model to analyze an image and suggest alt text
+  - Research and experimenting on a good model + prompt that works well
+  - Make it easy to change the model and prompt
+- Script to read all Markdown .md files in the project, find any image references without alt text, and run the generator script to add it
+- GitHub action to run the above automatically and, if any changes made, create a pull request to bring in the alt text additions
 
 ### check-files.py
 
@@ -47,6 +55,10 @@ Found 7 markdown file(s).
 File: /Users/brian/repos/cantoni.org/content/blog/2020/01/23/barcode-scanning-video-games-collection/index.md
 Missing alt text line 26: ![](/images/BarcodeScanGames-768x584.jpg)
 ```
+
+### GitHub action
+
+create_pull_request action: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md
 
 ## Prompts to Test
 
@@ -76,3 +88,4 @@ To start, limit to just a couple images.
 
 [md]: https://www.markdownguide.org/basic-syntax/#images-1
 [aim]: https://webaim.org/techniques/alttext/
+[mdn]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt#usage_notes
