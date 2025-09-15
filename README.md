@@ -4,6 +4,8 @@ Automatically create and suggest alternative text for images referenced in Markd
 
 ![A person uses a laptop to create alt text for an image of a mountain with a sun](logo.png "AltAuto Project")
 
+_Image credit: ChatGPT_
+
 ## Alt Text and Markdown
 
 The [Markdown standard][md] allows alternate text to be specified using syntax like:
